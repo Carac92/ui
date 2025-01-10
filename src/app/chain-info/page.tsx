@@ -18,7 +18,7 @@ export default function ChainInfoPage() {
     useEffect(() => {
         async function fetchBlock() {
             if (!blockNumber || !publicClient) return
-            const block = await publicClient.getBlock(blockNumber)
+            const block = await publicClient.getBlock({blockNumber})
             if (block) {
                 setBlockHash(block.hash)
                 setGasUsed(block.gasUsed)
