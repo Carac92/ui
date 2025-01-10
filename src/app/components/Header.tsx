@@ -11,7 +11,7 @@ export function Header() {
     const { disconnect } = useDisconnect()
     const { data: balanceData } = useBalance({ address })
     const { chain } = useAccount()
-    const { connectors, connect, error, pendingConnector } = useConnect()
+    const { connectors, connect, error, isPending } = useConnect()
     const { chains, switchChain } = useSwitchChain()
     const isConnected = status === 'connected'
     return (
@@ -40,10 +40,10 @@ export function Header() {
                         <button
                             key={connector.id}
                             onClick={() => connect({ connector })}
-                            disabled={connector.id === pendingConnector?.id}
+                            disabled={isPending === false}
                         >
                             {connector.name}
-                            {connector.id === pendingConnector?.id && ' (connecting)'}
+                            {isPending === false && ' (connect)'}
                         </button>
                     ))}
                     {error && <div style={{ color: 'red' }}>{error.message}</div>}

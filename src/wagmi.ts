@@ -14,7 +14,7 @@ export function getConfig() {
       injected(),
       coinbaseWallet(),
       walletConnect({
-        projectId: process.env.NEXT_PUBLIC_WC_PROJECT_ID,
+        projectId: process.env.NEXT_PUBLIC_WC_PROJECT_ID!,
       }),
     ],
     ssr: true,
